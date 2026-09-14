@@ -1,0 +1,4 @@
+interface:
+  display_name: "架构模式选型"
+  short_description: "把需求翻译成真实问题，匹配成熟模式并审查生产落地"
+  default_prompt: "使用 $choose-architecture-pattern 为这个需求做架构选型：先翻译出真实问题与关键假设，识别项目类型并加载对应模式库，至少比较两个方案，分析失败模式，给出推荐方案、最小可信落地路径和实施前需要验证的事实。"
