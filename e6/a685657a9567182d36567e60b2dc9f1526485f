@@ -1,0 +1,38 @@
+skills/fastapi-project-standards/agents/openai.yaml
+  s_3c77b8fd93b5dd::t_90b6b79d05ff7e 3-4
+skills/fastapi-project-standards/references/security-access-boundary.md
+  s_3c77b8fd93b5dd::t_90b6b79d05ff7e 1-168
+skills/fastapi-project-standards/MAINTENANCE.md
+  s_3c77b8fd93b5dd::t_90b6b79d05ff7e 69,111-131
+  s_3c77b8fd93b5dd::t_93a9cb6de4358a 132
+skills/fastapi-project-standards/SKILL.md
+  s_3c77b8fd93b5dd::t_90b6b79d05ff7e 3,8,10,16,20,26,57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "e6a685657a9567182d36567e60b2dc9f1526485f",
+  "prompts": {},
+  "sessions": {
+    "s_3c77b8fd93b5dd": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6aa76f0fa3f35911dee8ec6b",
+        "model": "Doubao-Seed-2.1-pro__dev"
+      },
+      "human_author": "wangqiao <wangqiao@crazymaplestudio.com>",
+      "custom_attributes": {
+        "session_id": "6aa76f0fa3f35911dee8ec6b",
+        "operation_id": "6aa7cc79a3f35911dee8ed94",
+        "runtime_client": "trae-tob-git-ai",
+        "client_type": "ide",
+        "display_model_name": "Doubao-Seed-2.1-Pro",
+        "edit_kind": "bash",
+        "source_scene": "agent",
+        "external_session_id": "6aa76f0fa3f35911dee8ec6b",
+        "tool_use_id": "6aa7cc79a3f35911dee8ed94",
+        "tool_name": "Shell"
+      }
+    }
+  }
+}
