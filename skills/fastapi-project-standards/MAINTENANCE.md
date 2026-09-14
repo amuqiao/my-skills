@@ -66,7 +66,7 @@
 
 `references/` 是运行时按需读取的详细规则。每个 reference 应围绕一个稳定规范面，例如配置、服务合同、数据库迁移、worker/job、测试或可观测性。reference 应表达判断框架，而不是实现清单。
 
-当前 skill 只实际维护配置、服务合同和日志三个 reference。不要因为名称是 `fastapi-project-standards`，就提前补齐一套完整后端规范库；新增 reference 必须先证明该规范面有可复用的高维判断，而不是普通 FastAPI 教程。
+当前 skill 只实际维护配置、服务合同、安全访问边界和日志四个 reference。不要因为名称是 `fastapi-project-standards`，就提前补齐一套完整后端规范库；新增 reference 必须先证明该规范面有可复用的高维判断，而不是普通 FastAPI 教程。
 
 维护者文档只放在本文件。不要把维护说明写进普通 reference，避免普通任务加载与当前实现无关的维护过程。
 
@@ -107,6 +107,28 @@ FastAPI 服务合同、稳定外壳、业务扩展位、注册事实源、OpenAP
 - 只改 route 或文档，不补 schema、registry / 等价真源、异常转换和 contract tests。
 
 不要把真实项目的 `OperationSpec` 字段清单、错误码表、业务 operation id、endpoint 列表、schema catalog、测试命令清单或业务包目录事实搬进这个 reference。真实项目只能用来校准哪些合同维度容易漂移，最终进入 reference 的应是可迁移的合同思想。
+
+## 安全访问边界规则的标尺
+
+`references/security-access-boundary.md` 要表达的是：
+
+```text
+FastAPI 接口暴露面、调用主体、凭证、授权/限流、浏览器边界与错误暴露规则。
+```
+
+维护它时，重点防止：
+
+- 把"给 route 加鉴权"直接变成"随手加一个 Depends"。
+- 新增业务 / 对外 / 跨模块 route 时默认放行，而不是要求访问级别声明或公开例外 allowlist。
+- 把 CORS、HTTPS、网关、API Key、JWT、Session、mTLS、限流和授权混成同一个安全概念。
+- 把 API Key、JWT secret、callback secret、Cookie、signed URL 或内部地址写进代码、前端产物、日志、示例或测试真实值。
+- 认证通过后跳过资源归属、租户、角色、配额、成本或副作用授权。
+- 把租户、角色或资源归属授权塞进 middleware，靠调用方自报字段判断，而不是读取服务端事实源。
+- 混淆 401、403、429、404 和 5xx，导致调用方无法判断认证、授权、容量和系统失败。
+- 把完整 token、request body、供应商错误、数据库状态、权限规则或内部拓扑暴露到错误响应或日志。
+- 只改安全代码，不补失败路径测试、OpenAPI security 投影、日志脱敏或网关绕过检查。
+
+不要把真实项目的密钥名称、JWT claim 表、权限角色表、租户模型、CORS origin 列表、网关部署拓扑、限流阈值或安全测试命令搬进这个 reference。真实项目只能用来校准哪些访问边界容易被模型混淆，最终进入 reference 的应是可迁移的安全判断框架。
 
 ## 日志规则的标尺
 

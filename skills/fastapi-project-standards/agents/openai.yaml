@@ -1,4 +1,4 @@
 interface:
   display_name: "FastAPI 项目规范"
-  short_description: "规范 FastAPI 配置、服务合同与日志边界"
-  default_prompt: "使用 $fastapi-project-standards 审查 FastAPI Settings、服务合同或日志观测边界，按触及面读取对应 reference，并给出最小可验证改动。"
+  short_description: "规范 FastAPI 配置、合同、安全与日志边界"
+  default_prompt: "使用 $fastapi-project-standards 审查 FastAPI Settings、服务合同、安全访问或日志观测边界，按触及面读取对应 reference，并给出最小可验证改动。"
