@@ -64,9 +64,9 @@
 
 `SKILL.md` 是触发入口和路由器，只保留适用场景、基本边界和按需读取 reference 的规则。不要把完整规范塞进 `SKILL.md`。
 
-`references/` 是运行时按需读取的详细规则。每个 reference 应围绕一个稳定规范面，例如配置、API 合同、数据库迁移、worker/job、测试或可观测性。reference 应表达判断框架，而不是实现清单。
+`references/` 是运行时按需读取的详细规则。每个 reference 应围绕一个稳定规范面，例如配置、服务合同、数据库迁移、worker/job、测试或可观测性。reference 应表达判断框架，而不是实现清单。
 
-当前 skill 只实际维护配置和日志两个 reference。不要因为名称是 `fastapi-project-standards`，就提前补齐一套完整后端规范库；新增 reference 必须先证明该规范面有可复用的高维判断，而不是普通 FastAPI 教程。
+当前 skill 只实际维护配置、服务合同和日志三个 reference。不要因为名称是 `fastapi-project-standards`，就提前补齐一套完整后端规范库；新增 reference 必须先证明该规范面有可复用的高维判断，而不是普通 FastAPI 教程。
 
 维护者文档只放在本文件。不要把维护说明写进普通 reference，避免普通任务加载与当前实现无关的维护过程。
 
@@ -87,6 +87,26 @@ FastAPI Pydantic Settings 配置分层、派生配置与启动校验规则。
 - 只改配置代码，不补启动校验、机器检查或测试。
 
 不要把真实项目配置清单搬进这个 reference。真实项目只能提供判断校准，最终进入 reference 的应是可迁移的配置思想。
+
+## 服务合同规则的标尺
+
+`references/service-contracts.md` 要表达的是：
+
+```text
+FastAPI 服务合同、稳定外壳、业务扩展位、注册事实源、OpenAPI 投影与合同测试规则。
+```
+
+维护它时，重点防止：
+
+- 把"新增一个接口"直接变成"route 里临时拼一份响应"。
+- 在每个接口、Job、callback 或 OpenAPI patch 中复制 envelope 顶层字段。
+- 把 OpenAPI、README 示例或 SDK 类型当作事实源，而不是 schema、registry 或等价可检查真源的投影。
+- 使用自由字符串错误码、未注册异常 reason、临时 HTTP status 或泄漏内部错误。
+- 把业务字段提升到服务顶层、Job 通用壳或 callback 顶层。
+- 混用 HTTP、Job、callback、CLI 或外部写回合同，导致调用方无法稳定判断。
+- 只改 route 或文档，不补 schema、registry / 等价真源、异常转换和 contract tests。
+
+不要把真实项目的 `OperationSpec` 字段清单、错误码表、业务 operation id、endpoint 列表、schema catalog、测试命令清单或业务包目录事实搬进这个 reference。真实项目只能用来校准哪些合同维度容易漂移，最终进入 reference 的应是可迁移的合同思想。
 
 ## 日志规则的标尺
 

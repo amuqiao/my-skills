@@ -1,27 +1,28 @@
 ---
 name: fastapi-project-standards
-description: "FastAPI 项目规范 skill，当前重点覆盖 Pydantic Settings 配置分层、派生配置、启动校验，以及日志出口、request_id、结构化日志和敏感字段边界。Use when creating, reviewing, or refactoring these FastAPI standards. 不用于通用后端教程、纯业务逻辑小修，或未触及配置/日志规范的普通 API、DB、worker 任务。"
+description: "FastAPI 项目规范 skill，当前重点覆盖 Pydantic Settings 配置分层、服务合同事实源与投影、日志出口、request_id、结构化日志和敏感字段边界。Use when creating, reviewing, or refactoring these FastAPI standards. 不用于通用后端教程、纯业务逻辑小修，或未触及配置/合同/日志规范的普通 API、DB、worker 任务。"
 ---
 
 # FastAPI Project Standards
 
-使用这个 skill 创建、审查或重构 FastAPI 项目规范。当前重点沉淀两个高价值规范面：Pydantic Settings 配置思想，以及 FastAPI 日志观测边界。
+使用这个 skill 创建、审查或重构 FastAPI 项目规范。当前重点沉淀三个高价值规范面：Pydantic Settings 配置思想、FastAPI 服务合同思想，以及 FastAPI 日志观测边界。
 
-不要把本 skill 用作通用 Python / 后端 / FastAPI 教程。普通业务逻辑小修、单函数 bug fix、纯算法实现，或只涉及普通 API、数据库、worker 代码但不触及配置或日志规范时，不需要使用本 skill。
+不要把本 skill 用作通用 Python / 后端 / FastAPI 教程。普通业务逻辑小修、单函数 bug fix、纯算法实现，或只涉及普通 API、数据库、worker 代码但不触及配置、合同或日志规范时，不需要使用本 skill。
 
 ## Workflow
 
 1. 先识别任务触及的规范面。
 
-   当前已有 reference 只覆盖配置与日志。其他 FastAPI 工程问题先读仓库事实和项目文档，不要把本 skill 当作完整项目模板。
+   当前已有 reference 只覆盖配置、服务合同与日志。其他 FastAPI 工程问题先读仓库事实和项目文档，不要把本 skill 当作完整项目模板。
 
 2. 先读本仓库事实。
 
-   优先读取 `AGENTS.md`、已有 settings、`.env.example`、日志初始化、middleware、exception handler、route、worker、测试和启动脚本。代码是真相，文档是快照；不要让规范建议脱离现有实现。
+   优先读取 `AGENTS.md` 和当前任务直接触及的代码事实：settings、`.env.example`、Pydantic schema、operation / error registry 或等价事实源、日志初始化、middleware、exception handler、route、OpenAPI 定制、worker、合同测试或启动脚本。代码是真相，文档是快照；不要让规范建议脱离现有实现。
 
 3. 按触及面加载 reference。
 
    - 创建、审查或重构 Pydantic Settings、`.env.example`、env key 映射、派生配置、启动校验、配置机器检查，或判断某个值是否应该新增为配置 key 时，读取 `references/configuration-settings.md`。
+   - 创建、审查或重构 FastAPI 业务 / 对外 / 跨模块 route、Pydantic request / response schema、HTTP envelope、错误 envelope、operation / error registry、OpenAPI 投影、异常转换、request id 合同、Job / Callback HTTP 投影或合同测试时，读取 `references/service-contracts.md`。
    - 创建、审查或重构日志出口、request id 传播、结构化日志事件、敏感日志字段、业务生命周期日志或日志验证时，读取 `references/observability-logging.md`。
 
 4. 保持边界清晰。
@@ -51,6 +52,7 @@ description: "FastAPI 项目规范 skill，当前重点覆盖 Pydantic Settings 
 ## References
 
 - `references/configuration-settings.md`：FastAPI / Pydantic Settings 配置分层、派生配置与启动校验规则，用于判断哪些值应该暴露成配置，哪些应保持为常量、派生值、脚本变量或废弃拒绝项。
+- `references/service-contracts.md`：FastAPI 服务合同、稳定外壳、业务扩展位、schema / registry 事实源、OpenAPI 投影、异常转换和合同测试规则，用于判断调用方可依赖什么以及这些合同由谁维护。
 - `references/observability-logging.md`：FastAPI 日志出口、request id 传播、结构化事件、敏感字段边界与日志验证规则，用于判断哪些信息应进入日志，哪些应留在项目已有事实源、指标或追踪系统中。
 
 ## Maintenance
