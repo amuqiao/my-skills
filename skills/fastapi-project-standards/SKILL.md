@@ -1,27 +1,28 @@
 ---
 name: fastapi-project-standards
-description: "FastAPI 项目规范 skill。Use when creating, reviewing, or refactoring FastAPI projects, especially Pydantic Settings 配置分层、派生配置、启动校验、API contracts, SQLAlchemy/Alembic, async boundaries, workers, testing, security, observability, and deployment health checks. 不用于非 FastAPI 项目或纯业务逻辑小修。"
+description: "FastAPI 项目规范 skill，当前重点覆盖 Pydantic Settings 配置分层、派生配置、启动校验，以及日志出口、request_id、结构化日志和敏感字段边界。Use when creating, reviewing, or refactoring these FastAPI standards. 不用于通用后端教程、纯业务逻辑小修，或未触及配置/日志规范的普通 API、DB、worker 任务。"
 ---
 
 # FastAPI Project Standards
 
-使用这个 skill 创建、审查或重构 FastAPI 项目规范。目标是让项目结构、配置、API 合同、数据库、异步边界、任务队列、安全、测试和运维入口保持清晰、可验证、可演进。
+使用这个 skill 创建、审查或重构 FastAPI 项目规范。当前重点沉淀两个高价值规范面：Pydantic Settings 配置思想，以及 FastAPI 日志观测边界。
 
-不要把本 skill 用作通用 Python 教程。普通业务逻辑小修、单函数 bug fix、纯算法实现，如果不涉及 FastAPI 项目边界或工程规范，不需要使用本 skill。
+不要把本 skill 用作通用 Python / 后端 / FastAPI 教程。普通业务逻辑小修、单函数 bug fix、纯算法实现，或只涉及普通 API、数据库、worker 代码但不触及配置或日志规范时，不需要使用本 skill。
 
 ## Workflow
 
 1. 先识别任务触及的规范面。
 
-   常见规范面包括项目结构、API route 与 schema、dependency injection、配置与 secrets、数据库与迁移、async/sync 边界、worker/job、错误处理、安全、日志与 request id、测试、健康检查和部署入口。
+   当前已有 reference 只覆盖配置与日志。其他 FastAPI 工程问题先读仓库事实和项目文档，不要把本 skill 当作完整项目模板。
 
 2. 先读本仓库事实。
 
-   优先读取 `AGENTS.md`、已有目录结构、route、schema、settings、数据库 session、migration、worker、测试和启动脚本。代码是真相，文档是快照；不要让规范建议脱离现有实现。
+   优先读取 `AGENTS.md`、已有 settings、`.env.example`、日志初始化、middleware、exception handler、route、worker、测试和启动脚本。代码是真相，文档是快照；不要让规范建议脱离现有实现。
 
 3. 按触及面加载 reference。
 
    - 创建、审查或重构 Pydantic Settings、`.env.example`、env key 映射、派生配置、启动校验、配置机器检查，或判断某个值是否应该新增为配置 key 时，读取 `references/configuration-settings.md`。
+   - 创建、审查或重构日志出口、request id 传播、结构化日志事件、敏感日志字段、业务生命周期日志或日志验证时，读取 `references/observability-logging.md`。
 
 4. 保持边界清晰。
 
@@ -50,3 +51,8 @@ description: "FastAPI 项目规范 skill。Use when creating, reviewing, or refa
 ## References
 
 - `references/configuration-settings.md`：FastAPI / Pydantic Settings 配置分层、派生配置与启动校验规则，用于判断哪些值应该暴露成配置，哪些应保持为常量、派生值、脚本变量或废弃拒绝项。
+- `references/observability-logging.md`：FastAPI 日志出口、request id 传播、结构化事件、敏感字段边界与日志验证规则，用于判断哪些信息应进入日志，哪些应留在项目已有事实源、指标或追踪系统中。
+
+## Maintenance
+
+更新本 skill 或吸收真实项目经验前，先读取 `MAINTENANCE.md`。维护时只沉淀可迁移的工程判断，不搬运项目配置清单、业务 key、目录事实或一次性排障细节。

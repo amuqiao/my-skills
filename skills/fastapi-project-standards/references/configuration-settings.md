@@ -1,6 +1,6 @@
 # FastAPI Configuration Settings
 
-本 reference 用于 FastAPI / Pydantic Settings 的配置分层、派生配置与启动校验。它不是配置清单，也不是某个项目的 env key 模板；它的作用是让 Codex 在创建、审查或重构配置时先判断配置语义，避免随手新增 key、暴露派生值、保留废弃配置或把脚本变量混进应用 Settings。
+本 reference 用于 FastAPI / Pydantic Settings 的配置分层、派生配置与启动校验。它不是配置清单，也不是某个项目的 env key 模板；它的作用是在创建、审查或重构配置时先判断配置语义，避免随手新增 key、暴露派生值、保留废弃配置或把脚本变量混进应用 Settings。
 
 核心问题不是"代码需要一个值，应该叫什么 env key"，而是：
 
@@ -212,7 +212,7 @@ Settings 字段和 env key 的映射必须集中、稳定、可机器检查。�
 
 ## 配置变更审查
 
-当任务新增、改名、删除或暴露配置项时，Codex 必须先做配置语义审查，再写代码：
+当任务新增、改名、删除或暴露配置项时，必须先做配置语义审查，再写代码：
 
 - 这个值是否已被归类为 `env-driven`、`tunable constants`、`derived` 或 `non-application env`？
 - 如果它是派生值，是否没有新增 env key，且派生关系集中在 Settings？
