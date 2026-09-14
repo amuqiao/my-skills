@@ -1,0 +1,4 @@
+interface:
+  display_name: "FastAPI 项目规范"
+  short_description: "规范 FastAPI 项目结构、配置、合同、测试与运维边界"
+  default_prompt: "使用 $fastapi-project-standards 创建、审查或重构 FastAPI 项目规范，按实际触及面读取对应 reference，并给出最小可验证改动。"
