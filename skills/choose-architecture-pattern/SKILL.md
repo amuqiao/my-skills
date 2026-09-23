@@ -1,7 +1,7 @@
 ---
 name: choose-architecture-pattern
 description: >-
-  Use when choosing or reviewing a software architecture or design pattern for a feature: translating vague requirements into the real problem, matching mature patterns, and checking production readiness across failure modes. Triggers on architecture or design-pattern decisions, state management, data consistency/idempotency, async/queue/retry reliability, API contracts, auth boundaries, caching, offline-first, SSR/hydration, background workers, and frontend/backend seams (Flutter/mobile, frontend/web, Python/backend, full-stack). 适用于架构选型、状态管理、数据一致性、异步可靠性、离线优先、全栈接缝设计与生产落地审查。Do not use for pure bug fixes, mechanical refactors, or implementation where no architecture/pattern boundary or production trade-off is in question.
+  Use when choosing or reviewing a software architecture or design pattern for a feature: translating vague requirements into the real problem, matching mature patterns, and checking production readiness across failure modes. Triggers on architecture or design-pattern decisions, state management, data consistency/idempotency, async/queue/retry reliability, API contracts, auth boundaries, caching, offline-first, SSR/hydration, background workers, and frontend/backend seams (Flutter/mobile, frontend/web, Python/backend, full-stack). 适用于架构选型、状态管理、数据一致性、异步可靠性、离线优先、全栈接缝设计与生产落地审查。Do not use for pure bug fixes, mechanical refactors, already-decided implementation, ordinary documentation/configuration cleanup, or maintenance where no architecture/pattern boundary or production trade-off is in question.
 version: 0.1.0
 ---
 
@@ -14,7 +14,7 @@ version: 0.1.0
 - 病 A：把"用户提出的实现手段"误当成"需求"。
 - 病 B：把"happy path 能跑"误当成"生产架构合理"。
 
-不要用于纯 bug 修复、机械重构，或不涉及任何架构/模式边界与生产权衡的实现工作。
+不要用于纯 bug 修复、机械重构、普通文档清理、已经明确方案的实现落地，或不涉及任何架构/模式边界与生产权衡的工作。维护 pi-agent-harness 的 prompts、routes、manifest、README 时，只有在用户明确要求重新设计 Supervisor 架构、agent 协作模式或信任边界时才使用本 skill；普通规范修补、语言调整、路由表小修不触发。
 
 ## Workflow
 
