@@ -26,3 +26,4 @@ my-skills/
 | choose-architecture-pattern | 架构选型和生产落地审查。 |
 | document-writing | 长期维护文档写作和结构优化。 |
 | implementation-contract-plans | current / contract / plans 文档边界整理。 |
+| vanilla-flux-frontend | 无框架 Web 前端架构：单向数据流 Store、默认转义模板、JSDoc 类型、design token、双层测试。 |

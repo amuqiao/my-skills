@@ -27,6 +27,7 @@ my-skills/skills/<skill-name>      # 源码真源，提交到 git
 | [choose-architecture-pattern](skills/choose-architecture-pattern/SKILL.md) | 架构选型、设计模式、状态管理、可靠性与生产落地审查。 |
 | [document-writing](skills/document-writing/SKILL.md) | README、安装说明、使用说明、架构说明等长期维护文档写作和结构优化。 |
 | [implementation-contract-plans](skills/implementation-contract-plans/SKILL.md) | 区分 current / contract / plans，整理实现事实、外部契约和未来计划。 |
+| [vanilla-flux-frontend](skills/vanilla-flux-frontend/SKILL.md) | 无框架 Web 前端的工程架构：Flux 风格单向数据流、默认转义 html 模板、JSDoc strict、design token 与单元 + e2e 双层测试。 |
 
 ## 安装到本机 Store
 
@@ -54,6 +55,7 @@ Codex 入口建议做成逐个软链接：
 ~/.codex/skills/choose-architecture-pattern -> ../../.agents/skills/choose-architecture-pattern
 ~/.codex/skills/document-writing -> ../../.agents/skills/document-writing
 ~/.codex/skills/implementation-contract-plans -> ../../.agents/skills/implementation-contract-plans
+~/.codex/skills/vanilla-flux-frontend -> ../../.agents/skills/vanilla-flux-frontend
 ```
 
 Claude Code 如需使用同一份 skill，也应链接到 `~/.agents/skills`，避免维护第二份副本。

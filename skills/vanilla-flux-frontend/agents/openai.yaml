@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vanilla Flux 前端架构"
+  short_description: "无框架前端：单向数据流 Store、默认转义模板、JSDoc 类型、design token、双层测试"
+  default_prompt: "使用 $vanilla-flux-frontend 新建或改造无框架 Web 前端：先判断是否适用，按 e2e 兜底 → 工程底座 → 视觉体系 → 逐块换新的顺序推进，每步单独可验证，最后按审查清单自查。"
